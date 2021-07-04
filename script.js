@@ -31,11 +31,12 @@ class Fetch {
         const myKey = 'd11be43a96a731cce3bb9835dfb17aa4'
   
       //make request to url
-  
-      const response = await fetch(
-        `https://api.openweathermap.org/data/2.5/weather?q=${input}&appid=${myKey}`
+      var p = `https://api.openweathermap.org/data/2.5/weather?q=${input}&appid=${myKey}`
+      console.log(p)
+      const response = await fetch(`https://api.openweathermap.org/data/2.5/weather?q=${input}&appid=${myKey}`
+       
       );
-  
+    //   https://api.openweathermap.org/data/2.5/weather?q=${Delhi}&appid=${'d11be43a96a731cce3bb9835dfb17aa4'}
       const data = await response.json();
   
       console.log(data);
@@ -43,8 +44,17 @@ class Fetch {
       return data;
     }
   }
+  const rock=new Fetch();
+form.addEventListener('click', (e) => {
+    e.preventDefault()
+    const search = document.getElementById("form1").value
 
-const rock=new Fetch();
+    var key = search.split(' ').join('')
+    alert(key);
+    rock.getCurrent(key);
+})
+
+
 rock.getCurrent('india');
 rock.getCurrent('Delhi');
   
